@@ -1,4 +1,33 @@
+# Node.js 관련 불필요한 파일 제외
 node_modules
-build
+npm-debug.log
+yarn-error.log
+
+# 환경 변수 파일 (보안 중요)
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# 로컬 개발 관련 파일
+.DS_Store
+.idea
+.vscode
+*.swp
+
+# Git 관련 불필요한 파일
 .git
 .gitignore
+
+# 로그 및 캐시 파일
+logs
+*.log
+log*.json
+.pnpm-store
+.cache
+
+# 빌드 및 배포 파일 제외
+dist
+build
+coverage

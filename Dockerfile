@@ -1,31 +1,26 @@
-# Base image (Node.js for build)
+# 1. Node.js 환경에서 React 앱 빌드
 FROM node:18 AS builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy package.json and install dependencies
 COPY package.json package-lock.json ./
 RUN npm install
 
-# Copy the rest of the app files and build the React app
-COPY . .
-RUN npm run dev
+COPY . . 
 
-# Base image for serving (Nginx)
+# ✅ Vite 프로젝트의 경우 `dist/` 폴더가 생성됨
+RUN npm run build
+
+# 2. Nginx를 사용하여 정적 파일 제공
 FROM nginx:latest
 
-# Remove default Nginx configuration
 RUN rm -rf /etc/nginx/conf.d
 
-# Copy custom Nginx config
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# Copy build files to Nginx public folder
-COPY --from=builder /app/build /usr/share/nginx/html
+# ✅ Vite 프로젝트는 `dist/` 폴더를 Nginx에 복사
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Expose port 80
-EXPOSE 80
-
-# Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
+
+EXPOSE 80
