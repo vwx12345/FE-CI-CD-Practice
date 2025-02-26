@@ -10,7 +10,7 @@ RUN npm install
 
 # Copy the rest of the app files and build the React app
 COPY . .
-RUN npm run build
+RUN npm run dev
 
 # Base image for serving (Nginx)
 FROM nginx:latest
