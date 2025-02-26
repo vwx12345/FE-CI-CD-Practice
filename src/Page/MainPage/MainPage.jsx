@@ -1,18 +1,15 @@
 import React from "react";
-import Hero from "./Hero";
-import Forum from "./Forum";
-import Contact from "./Contact";
+import Info from "./Info";
+import AnimatedPage from "../../Components/Effect/AnimatedPage";
 
 const MainPage = () => {
   return (
-    <div>
-      <Hero />
-      <div className="p-10"></div>
-      <Forum />
-      <Contact />
-    </div>
+    <AnimatedPage>
+      <div className="pt-20 bg-gray-900 text-white p-6">
+        <Info />
+      </div>
+    </AnimatedPage>
   );
 };
-
 
 export default MainPage;

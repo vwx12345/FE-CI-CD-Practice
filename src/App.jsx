@@ -6,12 +6,9 @@ import Navbar from "./Components/Navbar/Navbar";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 import MainPage from "./Page/MainPage/MainPage";
-import About from "./Page/About/About";
-import Leadership from "./Page/Leadership/Leadership";
-import Board from "./Page/Board/Board";
-import Services from "./Page/Services/Services";
-import Contact from "./Page/Contact/Contact";
-import Sample from './Page/Sample/sample';
+import Loading from "./Page/Loading/Loading";
+import Result from "./Page/Result/Result";
+
 
 function Layout() {
   return (
@@ -33,30 +30,18 @@ const router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: "/about",
-        element: <About />,
+        path: "/result",
+        element: <Result />,
       },
       {
-        path: "/leadership",
-        element: <Leadership />,
+        path: "/loading",
+        element: <Loading />,
       },
-      {
-        path: "/board",
-        element: <Board />,
-      },
-      {
-        path: "/our-services",
-        element: <Services />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      { path: "/sample",
-         element: <Sample /> },
     ],
   },
 ]);
+
+
 
 function App() {
   return <RouterProvider router={router} />;
