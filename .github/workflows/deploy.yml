@@ -42,5 +42,5 @@ jobs:
             docker system prune -af  
 
             echo "Running new container..."
-            docker run -d --name harmonai-fe -p 80:80 --restart always $IMAGE
+            docker run -d --name harmonai-fe -p 5137:80 --restart always $IMAGE
           EOF
