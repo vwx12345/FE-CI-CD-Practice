@@ -1,0 +1,46 @@
+name: Deploy to EC2 with Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/harmonai-fe:latest .
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/harmonai-fe:latest
+
+      - name: Setup SSH Key
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > key.pem
+          chmod 600 key.pem  # 더 안전한 권한 설정
+
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            IMAGE="${{ secrets.DOCKER_HUB_USERNAME }}/harmonai-fe:latest"
+
+            echo "Pulling latest image..."
+            docker pull $IMAGE
+
+            echo "Stopping and removing old container..."
+            docker stop harmonai-fe || true
+            docker rm harmonai-fe || true
+
+            echo "Removing unused Docker images..."
+            docker system prune -af  
+
+            echo "Running new container..."
+            docker run -d --name harmonai-fe -p 80:80 --restart always $IMAGE
+          EOF
