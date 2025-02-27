@@ -62,7 +62,7 @@ const Loading = () => {
             headers: {
               "Content-Type": "application/json",
             }, 
-            body: JSON.stringify({ question, latitude: 37.4004401, longitude: 127.1067428 }),
+            body: JSON.stringify({ question, pop, latitude: 37.4004401, longitude: 127.1067428 }),
           })
             .then((response) => response.json())
             .then((resultData) => {
