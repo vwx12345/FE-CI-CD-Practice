@@ -56,7 +56,6 @@ const Loading = () => {
         (error) => {
           console.error("❌ 위치 정보를 가져올 수 없습니다:", error);
 
-          // 위치 정보를 가져오지 못한 경우 `latitude: null, longitude: null`을 설정하고 백엔드 요청
           fetch(`${API_BASE_URL}/api/info/current`, {
             method: "POST",
             headers: {
