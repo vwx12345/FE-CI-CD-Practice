@@ -61,8 +61,8 @@ const Loading = () => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ question, latitude: null, longitude: null }),
+            }, 
+            body: JSON.stringify({ question, latitude: 37.4004401, longitude: 127.1067428 }),
           })
             .then((response) => response.json())
             .then((resultData) => {
