@@ -123,6 +123,8 @@ const Loading = () => {
         const response = await fetch(`${API_BASE_URL}/api/info/current`, {
           method: "POST",
           headers: {
+            "Origin": "http://3.35.125.238",  // ✅ 서버에서 허용된 Origin 추가
+
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ question, pop, latitude: 37.4004401, longitude: 127.1067428 }),
@@ -149,6 +151,8 @@ const Loading = () => {
         const response = await fetch(`${API_BASE_URL}/api/info/current`, {
           method: "POST",
           headers: {
+            "Origin": "http://3.35.125.238",  // ✅ 서버에서 허용된 Origin 추가
+
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ question, pop, latitude: 37.4004401, longitude: 127.1067428 }),
