@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -31,15 +31,15 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             IMAGE="${{ secrets.DOCKER_HUB_USERNAME }}/harmonai-fe:latest"
 
-            echo "Pulling latest image..."
-            docker pull $IMAGE
-
             echo "Stopping and removing old container..."
             docker stop harmonai-fe || true
             docker rm harmonai-fe || true
 
-            echo "Removing unused Docker images..."
-            docker system prune -af  
+            echo "Removing old image..."
+            docker rmi -f $IMAGE || true
+
+            echo "Pulling latest image..."
+            docker pull $IMAGE
 
             echo "Running new container..."
             docker run -d --name harmonai-fe -p 5137:80 --restart always $IMAGE
