@@ -50,7 +50,7 @@ const Loading = () => {
               console.error("❌ 응답 오류:", response.statusText);
             }
           } catch (error) {
-            console.error("❌ 요청 실패:", error);
+            console.error("❌ 요청 실패1:", error);
           }
         },
         (error) => {
@@ -68,7 +68,7 @@ const Loading = () => {
               console.log("📡 백엔드 응답:", resultData);
               navigate("/result", { state: { question, result: resultData } });
             })
-            .catch((error) => console.error("❌ 요청 실패:", error));
+            .catch((error) => console.error("❌ 요청 실패2:", error));
         }
       );
     };

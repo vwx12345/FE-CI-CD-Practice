@@ -8,7 +8,7 @@ const NavBar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-xl lg:text-2xl font-bold lg:ml-12 lg:mr-8">
           <Link to="/">
-            HarmonAI &nbsp;
+            HarmonAIA &nbsp;
             <img
               src={logo}
               alt="Logo Icon"
