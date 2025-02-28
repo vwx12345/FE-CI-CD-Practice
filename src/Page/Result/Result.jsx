@@ -59,7 +59,7 @@ const Result = () => {
                 })}
               </div>
             ) : (
-              <p className="text-gray-400">추천된 노래가 없습니다.</p>
+              <p className="text-gray-400">추천된 노래가 없습니다. </p>
             )}
           </div>
         </div>
