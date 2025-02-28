@@ -32,8 +32,8 @@ jobs:
             IMAGE="${{ secrets.DOCKER_HUB_USERNAME }}/harmonai-fe:latest"
 
             echo "Stopping and removing old container..."
-            docker stop harmonai-fe || true
-            docker rm harmonai-fe || true
+            docker stop front || true
+            docker rm front || true
 
             echo "Removing old image..."
             docker rmi -f $IMAGE || true
@@ -42,5 +42,5 @@ jobs:
             docker pull $IMAGE
 
             echo "Running new container..."
-            docker run -d --name harmonai-fe -p 5137:80 --restart always $IMAGE
+            docker run -d --name front -p 80:80 $IMAGE
           EOF
