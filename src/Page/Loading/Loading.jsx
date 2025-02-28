@@ -126,6 +126,8 @@ const Loading = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ question, pop, latitude: 37.4004401, longitude: 127.1067428 }),
+          mode: "cors", // CORS 요청 명시적으로 허용
+
         });
 
         if (response.ok) {
