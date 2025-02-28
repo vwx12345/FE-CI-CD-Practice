@@ -155,10 +155,10 @@ const Loading = () => {
           // mode: "cors", // CORS 요청 명시적으로 허용
 
         });
-
+ 
         if (response.ok) {
           const resultData = await response.json();
-          console.log("📡 백엔드 응답:", resultData);
+          console.log("📡 백엔드 응답dd:", resultData);
           navigate("/result", { state: { question, result: resultData } });
         } else {
           console.error("❌ 응답 오류:", response.statusText);
