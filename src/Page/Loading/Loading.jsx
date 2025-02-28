@@ -123,7 +123,7 @@ const Loading = () => {
         const response = await fetch(`${API_BASE_URL}/api/info/current`, {
           method: "POST",
           headers: {
-            "Origin": "http://3.35.125.238",  // ✅ 서버에서 허용된 Origin 추가
+            "Origin": "http://3.35.125.238:8080",  // ✅ 서버에서 허용된 Origin 추가
 
             "Content-Type": "application/json",
           },
@@ -151,7 +151,7 @@ const Loading = () => {
         const response = await fetch(`${API_BASE_URL}/api/info/current`, {
           method: "POST",
           headers: {
-            "Origin": "http://3.35.125.238",  // ✅ 서버에서 허용된 Origin 추가
+            "Origin": "http://3.35.125.238:8080",  // ✅ 서버에서 허용된 Origin 추가
 
             "Content-Type": "application/json",
           },
