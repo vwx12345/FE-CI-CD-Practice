@@ -24,7 +24,7 @@ jobs:
       - name: Setup SSH Key
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > key.pem
-          chmod 600 key.pem  # 더 안전한 권한 설정
+          chmod 600 key.pem  # 더 안전한 권한 설정.
 
       - name: Deploy to EC2
         run: |
