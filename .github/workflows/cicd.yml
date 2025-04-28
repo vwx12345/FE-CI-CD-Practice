@@ -1,0 +1,29 @@
+name: Deploy Frontend to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to EC2 via SSH
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ec2-user
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd FE-CI-CD-Practice
+          git pull origin main
+          npm install
+          npm run build
+          pm2 delete frontend || true
+          pm2 start "serve -s dist -l 3000" --name frontend
+          pm2 save

@@ -6,7 +6,7 @@ const Info = () => {
       {/* 서비스 소개 박스 */}
       <div className="p-5 bg-gray-700 text-gray-300 rounded-lg shadow-lg">
         <div className="p-2 bg-gray-600 rounded-md mb-3">
-          <h1 className="text-3xl font-bold">HarmonAI 서비스 소개</h1>
+          <h1 className="text-3xl font-bold">HarmonAI 서비스 소개2</h1>
         </div>
         <p className="text-lg">
           당신의 감정과 날씨에 딱 맞는 음악, 맞춤형으로 즐겨보세요! 🎵 <br />
